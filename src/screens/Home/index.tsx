@@ -16,22 +16,8 @@ export default function Home() {
   const [participants, setParticipants] = useState<string[]>([]);
   const [participantName, setParticipantName] = useState("");
 
-  // const participants = [
-  //   "Thiago",
-  //   "Gabriel",
-  //   "Moyses",
-  //   "Caue",
-  //   "Fernando",
-  //   "Pamela",
-  //   "Mariana",
-  //   "Clarinha",
-  //   "Tita",
-  //   "Berna",
-  //   "Willy",
-  // ];
-
   function handleParticipantAdd() {
-    if (participants.includes(participantName)) {
+    if (participants.includes(participantName.trimEnd())) {
       return Alert.alert(
         "Participante existe",
         "Já existe um participante na lista com esse nome!"
@@ -41,7 +27,7 @@ export default function Home() {
     }
     console.log("Vc clicou no botao Adicionar");
 
-    setParticipants((prevState) => [...prevState, participantName]);
+    setParticipants((prevState) => [...prevState, participantName.trimEnd()]);
     setParticipantName("");
   }
 
